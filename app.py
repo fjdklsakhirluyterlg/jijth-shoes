@@ -148,3 +148,7 @@ def signup():
         return redirect('/dashboard')
     else:
         return render_template("signup.html")
+
+@app.route("/api/add/item")
+def api_add_item():
+    pass
