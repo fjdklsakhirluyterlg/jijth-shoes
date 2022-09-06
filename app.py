@@ -85,6 +85,11 @@ class Item(db.Model):
     name = db.Column(db.String(255))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
+class Basket(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    items = db.relationship('Item', backref="basket")
+
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(150), unique=True)
