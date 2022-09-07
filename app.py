@@ -157,4 +157,11 @@ def api_add_category():
     data = request.get_json()
     name = data["name"]
     user_id = data["user_id"]
-    
+    new = Category(name=name, user_id=user_id, stock=0)
+    db.session.add(new)
+    id = getattr(new, "id")
+    for item in data["items"]:
+        new_item = Item(category_id = id)
+        db.session.add(new_item)
+        new.stock += 1
+    db.session.commit()
