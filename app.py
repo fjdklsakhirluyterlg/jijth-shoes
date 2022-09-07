@@ -82,7 +82,6 @@ class Notifications(db.Model):
 
 class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
 
@@ -148,4 +147,8 @@ def signup():
 def api_add_item():
     data = request.get_json()
     category = data["category"]
+    user_id = data["user_id"]
+    catego = Category.query.filter_by(name=category).first()
+    catego.stock += 1
+    item = Item(user_id, category_id=catego.id)
     
