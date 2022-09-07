@@ -151,4 +151,6 @@ def api_add_item():
     catego = Category.query.filter_by(name=category).first()
     catego.stock += 1
     item = Item(user_id, category_id=catego.id)
+    db.session.add(item)
+    db.session.commit()
     
