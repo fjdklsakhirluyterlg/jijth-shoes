@@ -153,4 +153,8 @@ def api_add_item():
     item = Item(user_id, category_id=catego.id)
     db.session.add(item)
     db.session.commit()
+
+@app.route("/api/add/category")
+def api_add_category():
+    pass
     
