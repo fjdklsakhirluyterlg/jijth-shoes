@@ -68,7 +68,6 @@ class User(db.Model, UserMixin):
     timestamp = db.Column(db.DateTime(), default=datetime.utcnow, index=True)
     security_key = db.Column(db.String(65))
     validated = db.Column(db.Boolean(), default=False)
-    seller = db.Column(db.Boolean())
     notifications = db.relationship('Notifications', backref="user")
     address = db.Column(db.Text)
     
@@ -82,7 +81,6 @@ class Notifications(db.Model):
 
 class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
 
 class Basket(db.Model):
@@ -95,6 +93,7 @@ class Category(db.Model):
     name = db.Column(db.String(150), unique=True)
     items = db.Column(db.Integer, db.ForeignKey('item.id'))
     stock = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 def validate_user_with_email(address, securitykey, name):
     msg = Message("""verify your email""", sender = 'drive1.banerjee.armaan@outlook.com', recipients=[address])
@@ -147,14 +146,15 @@ def signup():
 def api_add_item():
     data = request.get_json()
     category = data["category"]
-    user_id = data["user_id"]
     catego = Category.query.filter_by(name=category).first()
     catego.stock += 1
-    item = Item(user_id, category_id=catego.id)
+    item = Item(category_id=catego.id)
     db.session.add(item)
     db.session.commit()
 
 @app.route("/api/add/category")
 def api_add_category():
-    pass
+    data = request.get_json()
+    name = data["name"]
+    user_id = data["user_id"]
     
