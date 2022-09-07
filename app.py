@@ -84,6 +84,7 @@ class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
 
 class Basket(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -127,12 +128,6 @@ def signup():
         # telephone = request.form["telephone"]
         password = request.form["password"]
         password2 = request.form["password2"]
-        # user = User.query.filter_by(email=email).first()
-        # if user:
-        #     return render_template("signup.html", msg="user already exists")
-        # emaile = User.query.filter_by(email=email).first()
-        # if emaile:
-        #     return render_template("signup.html", msg="user already exists")
         if password != password2:
             return render_template("signup.html", msg="pasword does not match")
         
@@ -149,6 +144,8 @@ def signup():
     else:
         return render_template("signup.html")
 
-@app.route("/api/add/item")
+@app.route("/api/add/item", methods=["POST"])
 def api_add_item():
-    pass
+    data = request.get_json()
+    category = data["category"]
+    
