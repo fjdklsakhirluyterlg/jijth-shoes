@@ -171,4 +171,6 @@ def api_add_category():
 
 @app.route("/api/add/basket")
 def api_add_basket():
-    pass
+    id = request.args.to_dict(flat=False)["id"]
+    return id
+    
