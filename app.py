@@ -174,5 +174,5 @@ def api_add_basket():
     id = request.args.to_dict(flat=False)["id"]
     return id
     
-if name == "__main__":
+if __name__ == "__main__":
     app.run(port=5040, host="0.0.0.0", debug=True)
