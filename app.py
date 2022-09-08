@@ -82,6 +82,7 @@ class Notifications(db.Model):
 class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
+    basket_id = db.Column(db.Integer, db.ForeignKey('basket.id'), nullable=True, default=None)
 
 class Basket(db.Model):
     id = db.Column(db.Integer, primary_key=True)
