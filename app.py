@@ -178,6 +178,7 @@ def api_add_basket():
     bid = getattr(new, "id")
     for i in id:
         item = Item.query.filter_by(id=i).first()
+        item.basket_id = bid
         
     
 if __name__ == "__main__":
