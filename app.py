@@ -178,11 +178,14 @@ def api_add_basket():
     bid = getattr(new, "id")
     for i in id:
         item = Item.query.filter_by(id=i).first()
+        categorid = item.category_id
         item.basket_id = bid
 
 @app.route("/api/checkout")
 def checkout():
-    pass
+    id = request.args.get("id")
+    backet = Basket.query.filter_by(id=id).first()
+    
         
     
 if __name__ == "__main__":
