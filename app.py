@@ -72,6 +72,7 @@ class User(db.Model, UserMixin):
     validated = db.Column(db.Boolean(), default=False)
     notifications = db.relationship('Notifications', backref="user")
     address = db.Column(db.Text)
+    baskets = db.relationship('Basket', backref="user")
     
 
 class Notifications(db.Model):
@@ -173,7 +174,8 @@ def api_add_category():
 def api_add_basket():
     id = request.args.to_dict(flat=False)["id"]
     user_id = request.args.get("user_id")
-    new = Basket()
+    new = Basket(user_id=user_id)
+    bid = getattr(new, "id")
     for i in id:
         item = Item.query.filter_by(id=i).first()
         
