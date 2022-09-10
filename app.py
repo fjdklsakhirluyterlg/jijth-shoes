@@ -189,6 +189,7 @@ def api_add_basket():
 def checkout():
     id = request.args.get("id")
     basket = Basket.query.filter_by(id=id).first()
+    userid = basket.user_id
     items = basket.items
     for item in items:
         catid = item.category_id
