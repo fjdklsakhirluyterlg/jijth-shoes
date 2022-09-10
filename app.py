@@ -173,6 +173,7 @@ def api_add_category():
 def api_add_basket():
     id = request.args.to_dict(flat=False)["id"]
     user_id = request.args.get("user_id")
+    new = Basket()
     for i in id:
         item = Item.query.filter_by(id=i).first()
         
