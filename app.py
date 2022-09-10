@@ -198,7 +198,7 @@ def checkout():
         category = Category.query.filter_by(id=catid).first()
         seller = category.user_id
         new = Notifications(user_id = seller, text=f"{name} wants a {category.name}")
-        
+        db.session.add(new)
         
     
 if __name__ == "__main__":
