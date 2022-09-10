@@ -190,6 +190,8 @@ def checkout():
     id = request.args.get("id")
     basket = Basket.query.filter_by(id=id).first()
     userid = basket.user_id
+    user = User.query.filter_by(user_id=userid).first()
+    name = user.name
     items = basket.items
     for item in items:
         catid = item.category_id
