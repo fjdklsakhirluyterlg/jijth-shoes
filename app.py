@@ -197,7 +197,7 @@ def checkout():
         catid = item.category_id
         category = Category.query.filter_by(id=catid).first()
         seller = category.user_id
-        new = Notifications(user_id = seller, text="")
+        new = Notifications(user_id = seller, text=f"{name} wants a {category.name}")
         
         
     
