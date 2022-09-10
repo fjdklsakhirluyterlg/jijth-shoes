@@ -189,8 +189,8 @@ def api_add_basket():
 @app.route("/api/checkout")
 def checkout():
     id = request.args.get("id")
-    backet = Basket.query.filter_by(id=id).first()
-    
+    basket = Basket.query.filter_by(id=id).first()
+    items = baste.items
         
     
 if __name__ == "__main__":
