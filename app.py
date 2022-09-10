@@ -171,8 +171,11 @@ def api_add_category():
 
 @app.route("/api/add/basket")
 def api_add_basket():
-    id = request.args.to_dict(flat=False)
-    return jsonify(id)
+    id = request.args.to_dict(flat=False)["id"]
+    user_id = request.args.get("user_id")
+    for i in id:
+        item = Item.query.filter_by(id=i).first()
+        
     
 if __name__ == "__main__":
     app.run(port=5040, host="0.0.0.0", debug=True)
