@@ -1,3 +1,4 @@
+from asyncio import new_event_loop
 import math
 from multiprocessing import parent_process
 from unicodedata import name
@@ -175,11 +176,15 @@ def api_add_basket():
     id = request.args.to_dict(flat=False)["id"]
     user_id = request.args.get("user_id")
     new = Basket(user_id=user_id)
+    db.session.add(new_event_loop)
     bid = getattr(new, "id")
     for i in id:
         item = Item.query.filter_by(id=i).first()
         categorid = item.category_id
+        category = Category.query.filter_by(id=categorid).first()
+        category.stock -= 1
         item.basket_id = bid
+    db.session.commit()
 
 @app.route("/api/checkout")
 def checkout():
