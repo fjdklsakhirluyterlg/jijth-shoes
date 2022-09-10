@@ -79,7 +79,6 @@ class User(db.Model, UserMixin):
 class Notifications(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(150))
-    read = db.Column(db.Boolean, default=False)
     timestamp = db.Column(db.DateTime(), default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
@@ -194,6 +193,9 @@ def checkout():
     for item in items:
         catid = item.category_id
         category = Category.query.filter_by(id=catid).first()
+        seller = category.user_id
+        new = Notifications(user_id = seller, text="")
+        
         
     
 if __name__ == "__main__":
