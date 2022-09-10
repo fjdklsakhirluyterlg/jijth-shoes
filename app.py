@@ -179,6 +179,10 @@ def api_add_basket():
     for i in id:
         item = Item.query.filter_by(id=i).first()
         item.basket_id = bid
+
+@app.route("/api/checkout")
+def checkout():
+    pass
         
     
 if __name__ == "__main__":
