@@ -8,7 +8,7 @@ $.ajax({
     success: function( ){
         console.log( 'Success')
     },
-    error: function( jqXhr, textStatus, errorThrown ){
+    error: function( errorThrown ){
         console.log( errorThrown );
     }
 });
