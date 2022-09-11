@@ -1,4 +1,4 @@
-function myFunction(){
+function item(){
     var name = document.getElementById("name").value;
     var stock = document.getElementById("stock").value;
     const xhttp = new XMLHttpRequest();
