@@ -79,7 +79,7 @@ class User(db.Model, UserMixin):
     notifications = db.relationship('Notifications', backref="user")
     address = db.Column(db.Text)
     baskets = db.relationship('Basket', backref="user")
-    
+    categories = db.relationship('Category', backref="user")
 
 class Notifications(db.Model):
     id = db.Column(db.Integer, primary_key=True)
