@@ -183,7 +183,7 @@ def api_add_category():
     new = Category(name=name, user_id=user_id, stock=0)
     db.session.add(new)
     id = getattr(new, "id")
-    for item in data["items"]:
+    for item in range(data["item"]):
         new_item = Item(category_id = id)
         db.session.add(new_item)
         new.stock += 1
