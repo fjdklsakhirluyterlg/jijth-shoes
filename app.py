@@ -225,6 +225,11 @@ def view_add_category():
         idx = getattr(new, "id")
         return jsonify({"id": idx})
 
+@login_required
+@app.route("/views/add")
+def please_view_add_with_params():
+    pass
+
 @app.route("/api/add/basket")
 def api_add_basket():
     id = request.args.to_dict(flat=False)["id"]
@@ -317,7 +322,7 @@ def add_stuff():
 @login_required
 @app.route("/home")
 def home():
-    return f"<h1>Hi {current_user.name} | {current_user.id}</h1>"
+    return f"<h1>Hi {current_user.name} |  {current_user.id}</h1>"
     
 if __name__ == "__main__":
     app.run(port=5040, host="0.0.0.0", debug=True)
