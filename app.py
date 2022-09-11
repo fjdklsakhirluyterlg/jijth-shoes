@@ -230,7 +230,7 @@ def api_uploads():
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 names.append(filename)
-                name = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                name = os.path.join(f"{app.config['UPLOAD_FOLDER']}{category.name}/", filename)
                 file.save(name)
     
 @app.route("/upload", methods=["POST", "GET"])
@@ -247,7 +247,7 @@ def upload_stuff():
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 names.append(filename)
-                name = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                name = os.path.join(f"{app.config['UPLOAD_FOLDER']}", filename)
                 file.save(name)
         
         return "uploaded"
