@@ -1,9 +1,3 @@
-from asyncio import new_event_loop
-import math
-from multiprocessing import parent_process
-from unicodedata import name
-from urllib.parse import parse_qsl
-from xml.dom.expatbuilder import parseFragmentString
 from flask import Flask, render_template, url_for, request, redirect, send_from_directory, send_file, flash, jsonify, Blueprint, Response, abort
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import or_
@@ -233,7 +227,7 @@ def api_add_basket():
     id = request.args.to_dict(flat=False)["id"]
     user_id = request.args.get("user_id")
     new = Basket(user_id=user_id)
-    db.session.add(new_event_loop)
+    db.session.add(new)
     bid = getattr(new, "id")
     for i in id:
         item = Item.query.filter_by(id=i).first()
