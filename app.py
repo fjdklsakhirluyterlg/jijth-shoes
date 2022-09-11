@@ -85,24 +85,24 @@ class Notifications(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(150))
     timestamp = db.Column(db.DateTime(), default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('User.id'))
 
 class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
-    basket_id = db.Column(db.Integer, db.ForeignKey('basket.id'), nullable=True, default=None)
+    category_id = db.Column(db.Integer, db.ForeignKey('Category.id'))
+    basket_id = db.Column(db.Integer, db.ForeignKey('Basket.id'), nullable=True, default=None)
 
 class Basket(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('User.id'))
     items = db.relationship('Item', backref="basket")
 
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(150), unique=True)
-    items = db.Column(db.Integer, db.ForeignKey('item.id'))
+    items = db.Column(db.Integer, db.ForeignKey('Item.id'))
     stock = db.Column(db.Integer)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('User.id'))
 
 def validate_user_with_email(address, securitykey, name):
     msg = Message("""verify your email""", sender = 'drive1.banerjee.armaan@outlook.com', recipients=[address])
