@@ -50,7 +50,7 @@ app.register_error_handler(404, page_not_found)
 
 DB_NAME = "dataaabbb.db"
 
-UPLOAD_FOLDER = '/path/to/the/uploads'
+UPLOAD_FOLDER = '/images'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 app.config['SQLALCHEMY_DATABASE_URI'] =f'sqlite:///{DB_NAME}'
