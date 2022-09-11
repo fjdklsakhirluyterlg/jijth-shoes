@@ -216,7 +216,22 @@ def upload(filename):
 
 @app.route("/api/uploads", methods=['POST'])
 def api_uploads():
-    pass
+    categoryid = request.args.get("id")
+    category = Category/query.filter_by(id=categoryid).first()
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        names = []
+        for file in request.files.getlist('file'):
+            if file.filename == '':
+                flash('No selected file')
+                return redirect(request.url)
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                names.append(filename)
+                name = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                file.save(name)
     
 @app.route("/upload", methods=["POST", "GET"])
 def upload_stuff():
