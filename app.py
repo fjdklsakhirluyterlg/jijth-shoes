@@ -217,7 +217,7 @@ def upload(filename):
 @app.route("/api/uploads", methods=['POST'])
 def api_uploads():
     categoryid = request.args.get("id")
-    category = Category/query.filter_by(id=categoryid).first()
+    category = Category.query.filter_by(id=categoryid).first()
     if request.method == 'POST':
         if 'file' not in request.files:
             flash('No file part')
