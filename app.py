@@ -62,7 +62,6 @@ app.config['MAIL_PASSWORD'] = 'Transport11.'
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 app.config['TEMPLATES_AUTO_RELOAD'] = True
-app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 mail = Mail(app)
 db = SQLAlchemy(app)
