@@ -144,7 +144,7 @@ def signup():
             validate_user_with_email(address=email, securitykey=security_key, name=name)
         except:
             pass
-        return redirect('/dashboard')
+        return redirect('/add')
     else:
         return render_template("signup.html")
 
