@@ -213,10 +213,13 @@ def api_add_category():
         new.stock += 1
     db.session.commit()
 
+@login_required
 @app.route("/add", methods=["POST", "GET"])
 def view_add_category():
     if request.method == 'POST':
         name = request.form["name"]
+        new = Category(name = name, category_id = current_user.id, stock=0)
+        
 
 @app.route("/api/add/basket")
 def api_add_basket():
