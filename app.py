@@ -244,7 +244,7 @@ def please_view_add_with_params():
         
     db.session.commit()
     idx = getattr(new, "id")
-    return jsonify({"id": idx})
+    return f"{idx}"
 
 @app.route("/api/add/basket")
 def api_add_basket():
