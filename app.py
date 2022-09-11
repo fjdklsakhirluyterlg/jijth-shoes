@@ -74,6 +74,7 @@ class User(db.Model, UserMixin):
     address = db.Column(db.Text)
     baskets = db.relationship('Basket', backref="user")
     categories = db.relationship('Category', backref="user")
+    bought = db.relationship('Item', backref="user")
 
 class Notifications(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -85,6 +86,7 @@ class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
     basket_id = db.Column(db.Integer, db.ForeignKey('basket.id'), nullable=True, default=None)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True, default=None)
 
 class Basket(db.Model):
     id = db.Column(db.Integer, primary_key=True)
