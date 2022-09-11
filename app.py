@@ -154,6 +154,17 @@ def signup():
     else:
         return render_template("signup.html")
 
+@login_required
+@app.route("/user/validate/<securitykey>")
+def validate_user(securitykey):
+    user = db.session.query(User).filter(User.security_key == securitykey).first()
+    if user.id == current_user.id:
+        user.validated = True
+        db.session.commit()
+        return redirect("/")
+    else:
+        return redirect("/")
+
 @app.route("/api/add/item", methods=["POST"])
 def api_add_item():
     data = request.get_json()
