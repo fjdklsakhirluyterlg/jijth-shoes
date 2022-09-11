@@ -350,6 +350,7 @@ def home():
 @app.route("/views")
 def views():
     categories = Category.query.order_by(Category.rating)
+    return render_template("views.html", categories=categories)
     
 if __name__ == "__main__":
     app.run(port=5040, host="0.0.0.0", debug=True)
