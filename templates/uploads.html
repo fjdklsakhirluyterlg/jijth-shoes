@@ -5,7 +5,7 @@
   </head>
   <body>
     {% for file in files %}
-      <img src="{{ url_for('upload', filename=file) }}" style="width: 64px">
+      <img src="{{ url_for('uploads', filename=file) }}" style="width: 64px">
     {% endfor %}
   </body>
 </html>
