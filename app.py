@@ -209,7 +209,9 @@ def checkout():
 
     db.session.commit()
     
-        
+@app.route("/upload", methods=["POST", "GET"])
+def upload_stuff():
+    pass     
     
 if __name__ == "__main__":
     app.run(port=5040, host="0.0.0.0", debug=True)
