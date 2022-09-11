@@ -235,7 +235,7 @@ def upload_stuff():
                 name = os.path.join(app.config['UPLOAD_FOLDER'], filename)
                 file.save(name)
         
-        return render_template("uploads.html")
+        return render_template("uploads.html", files=names)
     return '''
     <!doctype html>
     <title>Upload new File</title>
