@@ -214,7 +214,7 @@ def api_add_category():
     db.session.commit()
 
 @login_required
-@app.route("/add", methods=["POST"])
+@app.route("/view/add", methods=["POST"])
 def view_add_category():
     if request.method == 'POST':
         name = request.form["name"]
