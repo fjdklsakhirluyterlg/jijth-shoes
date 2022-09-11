@@ -206,6 +206,8 @@ def checkout():
         seller = category.user_id
         new = Notifications(user_id = seller, text=f"{name} wants a {category.name}")
         db.session.add(new)
+
+    db.session.commit()
     
         
     
