@@ -12,6 +12,7 @@ from flask_mail import Mail, Message
 from flask_cors import CORS
 from flask_restful import Resource, Api
 from datetime import datetime
+from werkzeug.utils import secure_filename
 import random
 
 app = Flask(__name__)
@@ -48,6 +49,9 @@ app.register_error_handler(404, page_not_found)
 
 DB_NAME = "dataaabbb.db"
 
+UPLOAD_FOLDER = '/path/to/the/uploads'
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+
 app.config['SQLALCHEMY_DATABASE_URI'] =f'sqlite:///{DB_NAME}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = "key"
@@ -59,7 +63,7 @@ app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024
-app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif']
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 mail = Mail(app)
 db = SQLAlchemy(app)
 
