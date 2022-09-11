@@ -145,7 +145,7 @@ def signup():
             validate_user_with_email(address=email, securitykey=security_key, name=name)
         except:
             pass
-        return redirect('/add')
+        return redirect('home')
     else:
         return render_template("signup.html")
 
