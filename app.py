@@ -50,7 +50,7 @@ app.register_error_handler(404, page_not_found)
 
 DB_NAME = "dataaabbb.db"
 
-UPLOAD_FOLDER = '/images'
+UPLOAD_FOLDER = './images/'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 app.config['SQLALCHEMY_DATABASE_URI'] =f'sqlite:///{DB_NAME}'
@@ -226,7 +226,8 @@ def upload_stuff():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             name = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            
+            with open(name, "w") as f:
+                f.write()
             return "uploaded"   
     return '''
     <!doctype html>
