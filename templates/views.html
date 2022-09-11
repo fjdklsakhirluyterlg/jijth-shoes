@@ -1,0 +1,10 @@
+<body>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="{{url_for('static', filename='add.js')}}"></script>
+    <h1>Shop</h1>
+    {% for c in categories%}
+        <div class="card" style="width: 18rem;">
+            <p>{{c.name}} | {{c.stock}} remianing</p>
+        </div>
+    {% endfor %}
+</body>
