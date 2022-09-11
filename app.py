@@ -232,7 +232,7 @@ def upload_stuff():
                 filename = secure_filename(file.filename)
                 name = os.path.join(app.config['UPLOAD_FOLDER'], filename)
                 file.save(name)
-                return "uploaded"   
+                return "uploaded"
     return '''
     <!doctype html>
     <title>Upload new File</title>
