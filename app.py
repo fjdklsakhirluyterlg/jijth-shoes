@@ -221,7 +221,7 @@ def view_add_category():
             new.stock += 1
         
         db.session.commit()
-        idx = getattr(new, "idx")
+        idx = getattr(new, "id")
         return jsonify({"id": idx})
 
 @app.route("/api/add/basket")
