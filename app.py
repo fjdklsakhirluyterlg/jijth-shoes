@@ -226,8 +226,7 @@ def upload_stuff():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             name = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            with open(name, "w") as f:
-                f.write()
+            file.save(name)
             return "uploaded"   
     return '''
     <!doctype html>
