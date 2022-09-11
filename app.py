@@ -216,15 +216,15 @@ def upload_stuff():
         if 'file' not in request.files:
             flash('No file part')
             return redirect(request.url)
-        file = request.files['file']
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            name = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            file.save(name)
-            return "uploaded"   
+        for file in request.files.getlist('file'):
+            if file.filename == '':
+                flash('No selected file')
+                return redirect(request.url)
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                name = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                file.save(name)
+                return "uploaded"   
     return '''
     <!doctype html>
     <title>Upload new File</title>
