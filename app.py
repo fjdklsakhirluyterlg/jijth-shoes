@@ -317,7 +317,7 @@ def add_stuff():
 @login_required
 @app.route("/home")
 def home():
-    return f"<h1>Hi {current_user.name}</h1>"
+    return f"<h1>Hi {current_user.name} | {current_user.id}</h1>"
     
 if __name__ == "__main__":
     app.run(port=5040, host="0.0.0.0", debug=True)
