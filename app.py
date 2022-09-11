@@ -214,7 +214,7 @@ def checkout():
 def upload(filename):
     return send_from_directory(app.config['UPLOAD_PATH'], filename)
 
-@app.route("/api/uplogs")
+@app.route("/api/uploads", methods=['POST'])
 def api_uploads():
     pass
     
