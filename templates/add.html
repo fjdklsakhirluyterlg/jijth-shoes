@@ -2,6 +2,12 @@
     <form>
         <input type="text" name="name">
         <input type="number" name="stock">
-        
+
+    </form>
+
+    <h2>Upload images</h2>
+    <form method=post enctype=multipart/form-data action="/api/uploads">
+      <input type=file name=file multiple>
+      <input type=submit value=Upload>
     </form>
 </body>
