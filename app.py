@@ -210,6 +210,10 @@ def checkout():
 
     db.session.commit()
 
+@app.route('/uploads/<filename>')
+def upload(filename):
+    return send_from_directory(app.config['UPLOAD_PATH'], filename)
+
 @app.route("/api/uplogs")
 def api_uploads():
     pass
