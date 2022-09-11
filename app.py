@@ -48,7 +48,7 @@ def page_not_found(e):
 
 app.register_error_handler(404, page_not_found)
 
-DB_NAME = "dataaabbb.db"
+DB_NAME = "database.db"
 
 UPLOAD_FOLDER = './images/'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
