@@ -224,6 +224,9 @@ def view_add_category():
         for i in range(request.form["stock"]):
             new_item = Item(category_id = id)
             db.session.add(new_item)
+            new.stock += 1
+        
+        db.session.commit()
 
 @app.route("/api/add/basket")
 def api_add_basket():
