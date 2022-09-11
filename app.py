@@ -233,6 +233,8 @@ def api_uploads():
                 name = os.path.join(f"{app.config['UPLOAD_FOLDER']}{category.name}/", filename)
                 file.save(name)
     
+    return jsonify(msg="uploaded")
+    
 @app.route("/upload", methods=["POST", "GET"])
 def upload_stuff():
     if request.method == 'POST':
