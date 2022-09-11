@@ -214,6 +214,7 @@ def view_add_category():
         name = request.form["name"]
         new = Category(name = name, user_id = current_user.id, stock=0)
         db.session.add(new)
+        db.session.commit()
         id = getattr(new, "id")
         for i in range(int(request.form["stock"])):
             new_item = Item(category_id = id)
