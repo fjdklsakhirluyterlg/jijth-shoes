@@ -337,7 +337,14 @@ def add_stuff():
 @login_required
 @app.route("/home")
 def home():
-    return f"<h1>Hi {current_user.name} |  {current_user.id}</h1>"
+    names = []
+    bought = current_user.bought
+    for i in bought:
+        catid = i.category_id
+        category = Category.query.filter_by(id=catid).first()
+        name = category.name
+        names.append(name)
+    return f"<h1>Hi {current_user.name} |  {current_user.id}</h1> <p>you have bought {names} items</p>"
     
 if __name__ == "__main__":
     app.run(port=5040, host="0.0.0.0", debug=True)
