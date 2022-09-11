@@ -209,6 +209,10 @@ def checkout():
         db.session.add(new)
 
     db.session.commit()
+
+@app.route("/api/uplogs")
+def api_uploads():
+    pass
     
 @app.route("/upload", methods=["POST", "GET"])
 def upload_stuff():
