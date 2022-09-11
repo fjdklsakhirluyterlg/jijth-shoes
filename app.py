@@ -161,9 +161,9 @@ def validate_user(securitykey):
     if user.id == current_user.id:
         user.validated = True
         db.session.commit()
-        return redirect("/")
+        return redirect("/home")
     else:
-        return redirect("/")
+        return redirect("/home")
 
 @app.route("/api/add/item", methods=["POST"])
 def api_add_item():
