@@ -5,6 +5,6 @@ function myFunction(){
     xhttp.onload = function(){
         console.log("stuff")
     }
-    xhttp.open("GET", `/views/add?name=${name}&stock=${stock}`)
+    xhttp.open("GET", `/views/add?name=${name}&stock=${stock}`, true)
     xhttp.send();
 }
