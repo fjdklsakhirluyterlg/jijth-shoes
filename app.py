@@ -98,6 +98,8 @@ class Category(db.Model):
     stock = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
+db.create_all()
+
 def validate_user_with_email(address, securitykey, name):
     msg = Message("""verify your email""", sender = 'drive1.banerjee.armaan@outlook.com', recipients=[address])
     msg.html = f"""
