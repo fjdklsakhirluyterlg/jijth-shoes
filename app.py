@@ -154,6 +154,29 @@ def signup():
     else:
         return render_template("signup.html")
 
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == 'POST':
+        name = request.form["name"]
+        password = request.form["password"]
+        usern = db.session.query(User).filter(User.name == name).first_or_404()
+        eid = usern.id
+        if not usern:
+            return redirect(url_for("signup"))
+        elif check_password_hash(usern.password, password):
+            login_user(usern, remember=True)
+            return redirect(f"/dashboard")
+        else:
+            return render_template("login.html", msg="password is incorrect")
+    else:
+        return render_template("login.html")
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect("/login")
+
 @login_required
 @app.route("/user/validate/<securitykey>")
 def validate_user(securitykey):
