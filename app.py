@@ -228,7 +228,20 @@ def view_add_category():
 @login_required
 @app.route("/views/add")
 def please_view_add_with_params():
-    pass
+    name = request.args.get("name")
+    stock = request.args.get("stock")
+    new = Category(name = name, user_id = current_user.id, stock=0)
+    db.session.add(new)
+    db.session.commit()
+    id = getattr(new, "id")
+    for i in range(stock):
+        new_item = Item(category_id = id)
+        db.session.add(new_item)
+        new.stock += 1
+        
+    db.session.commit()
+    idx = getattr(new, "id")
+    return jsonify({"id": idx})
 
 @app.route("/api/add/basket")
 def api_add_basket():
