@@ -215,7 +215,8 @@ def api_add_category():
 
 @app.route("/add", methods=["POST", "GET"])
 def view_add_category():
-    parseFragmentString
+    if request.method == 'POST':
+        name = request.form["name"]
 
 @app.route("/api/add/basket")
 def api_add_basket():
