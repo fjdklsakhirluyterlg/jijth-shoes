@@ -99,6 +99,7 @@ class Category(db.Model):
     items = db.Column(db.Integer, db.ForeignKey('item.id'))
     stock = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    rating = db.Column(db.Float, default=4.5)
 
 db.create_all()
 
@@ -348,7 +349,7 @@ def home():
 
 @app.route("/views")
 def views():
-    pass
+    categories = Category.query.order_by("stock")
     
 if __name__ == "__main__":
     app.run(port=5040, host="0.0.0.0", debug=True)
