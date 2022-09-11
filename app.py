@@ -3,6 +3,7 @@ import math
 from multiprocessing import parent_process
 from unicodedata import name
 from urllib.parse import parse_qsl
+from xml.dom.expatbuilder import parseFragmentString
 from flask import Flask, render_template, url_for, request, redirect, send_from_directory, send_file, flash, jsonify, Blueprint, Response, abort
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import or_
@@ -211,6 +212,10 @@ def api_add_category():
         db.session.add(new_item)
         new.stock += 1
     db.session.commit()
+
+@app.route("/add", methods=["POST", "GET"])
+def view_add_category():
+    parseFragmentString
 
 @app.route("/api/add/basket")
 def api_add_basket():
