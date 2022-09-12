@@ -5,9 +5,12 @@ function item(){
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function(){
         console.log("stuff")
+        alert(xhttp.responseText);
         document.getElementById("name").innerHTML = name;
         document.getElementById("stock").innerHTML = stock;
         document.getElementById("price").innerHTML = price;
+        var form = document.getElementById("images");
+        form.action = ""
     }
     xhttp.open("GET", `/views/add?name=${name}&stock=${stock}&price=${price}`)
     xhttp.send();
