@@ -241,7 +241,7 @@ def please_view_add_with_params():
     db.session.add(new)
     db.session.commit()
     id = getattr(new, "id")
-    for i in range(stock):
+    for i in range(int(stock)):
         new_item = Item(category_id = id)
         db.session.add(new_item)
         new.stock += 1
