@@ -236,7 +236,7 @@ def view_add_category():
 def please_view_add_with_params():
     name = request.args.get("name")
     stock = request.args.get("stock")
-    price = request.args.ger("price")
+    price = request.args.get("price")
     new = Category(name = name, user_id = current_user.id, stock=0, price=price)
     db.session.add(new)
     db.session.commit()
