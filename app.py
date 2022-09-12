@@ -100,6 +100,7 @@ class Category(db.Model):
     stock = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     rating = db.Column(db.Float, default=4.5)
+    price = db.Column(db.Floa)
 
 db.create_all()
 
