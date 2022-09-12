@@ -118,6 +118,9 @@ def validate_user_with_email(address, securitykey, name):
     mail.send(msg)
     return {"msg": "sent"}
 
+def email_notification(address, message):
+    pass
+
 def mank_random_long_id(length):
     characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
     result = ""
