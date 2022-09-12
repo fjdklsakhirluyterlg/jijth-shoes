@@ -217,7 +217,8 @@ def api_add_category():
 def view_add_category():
     if request.method == 'POST':
         name = request.form["name"]
-        new = Category(name = name, user_id = current_user.id, stock=0)
+        price = request.form["price"]
+        new = Category(name = name, user_id = current_user.id, stock=0, price=price)
         db.session.add(new)
         db.session.commit()
         id = getattr(new, "id")
