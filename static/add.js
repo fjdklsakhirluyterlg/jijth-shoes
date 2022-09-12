@@ -5,9 +5,9 @@ function item(){
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function(){
         console.log("stuff")
-        document.getElementById("name").value = name;
-        document.getElementById("stock").value = stock;
-        document.getElementById("price").value = price;
+        document.getElementById("name").setAttribute('value', name);
+        document.getElementById("stock").setAttribute('value', stock);
+        document.getElementById("price").setAttribute('value', price);
         var form = document.getElementById("images");
         form.action = `/api/uploads?id=${xhttp.responseText}`
     }
