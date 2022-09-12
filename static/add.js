@@ -6,6 +6,6 @@ function item(){
     xhttp.onload = function(){
         console.log("stuff")
     }
-    xhttp.open("GET", `/views/add?name=${name}&stock=${stock}&price=${price}`, true)
+    xhttp.open("GET", `/views/add?name=${name}&stock=${stock}&price=${price}`)
     xhttp.send();
 }
