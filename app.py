@@ -119,7 +119,7 @@ def validate_user_with_email(address, securitykey, name):
     return {"msg": "sent"}
 
 def email_notification(address, message):
-    pass
+    msg = Message("someone wants your stuff", sender = 'drive1.banerjee.armaan@outlook.com', recipients=[address])
 
 def mank_random_long_id(length):
     characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
