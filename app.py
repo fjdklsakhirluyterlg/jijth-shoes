@@ -102,6 +102,9 @@ class Category(db.Model):
     rating = db.Column(db.Float, default=4.5)
     price = db.Column(db.Float)
 
+class Image(db.Model):
+    id = db.Column(db.Integer, primery_key=True)
+
 db.create_all()
 
 def validate_user_with_email(address, securitykey, name):
