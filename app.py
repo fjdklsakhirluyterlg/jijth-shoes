@@ -369,8 +369,14 @@ def view_basket():
     basket = Basket.query.filter_by(id=id)
     if basket.user_id != current_user.id:
         return redirect("/dashboard")
+    price = 0
     items = basket.items
-    return render_template("basket.html")
+    for item in items:
+        categor = item.category_id
+        category = Category.query.filter_by(id=categor)
+        price += category.price
+        
+    return render_template("basket.html", items=items, price=price)
     
 if __name__ == "__main__":
     app.run(port=5040, host="0.0.0.0", debug=True)
