@@ -361,6 +361,16 @@ def home():
 def views():
     categories = Category.query.order_by(Category.rating)
     return render_template("views.html", categories=categories)
+
+@login_required
+@app.route("/basket/view")
+def view_basket():
+    id = request.args.get("id")
+    basket = Basket.query.filter_by(id=id)
+    if basket.user_id != current_user.id:
+        return redirect("/dashboard")
+    items = basket.items
+    return render_template("basket.html")
     
 if __name__ == "__main__":
     app.run(port=5040, host="0.0.0.0", debug=True)
