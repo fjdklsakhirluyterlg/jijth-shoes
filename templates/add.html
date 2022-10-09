@@ -1,6 +1,6 @@
 <head><script src="{{url_for('static', filename='add.js')}}"></script></head>
 <body>
-    <form onsubmit="item({{current_user.id}};return false)">
+    <form onsubmit="item({{current_user.id}});return false">
         <label>name</label><input type="text" name="name" id="name">
         <label>stock</label><input type="number" name="stock" id="stock">
         <label>price</label><input type="number" name="price" id="price">
