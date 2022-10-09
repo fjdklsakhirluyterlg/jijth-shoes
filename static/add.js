@@ -4,7 +4,13 @@ function item(id){
     var name = document.getElementById("name").value;
     var stock = document.getElementById("stock").value;
     var price = document.getElementById("price").value;
-    fetch(`/views/add?name=${name}&stock=${stock}&price=${price}`)
+    fetch(`/views/add?name=${name}&stock=${stock}&price=${price}`).then(response => response.json())
+    .then(result => {
+    console.log('Success:', result);
+    })
+    .catch(error => {
+    console.error('Error:', error);
+    });
 }
 
 function image(){
