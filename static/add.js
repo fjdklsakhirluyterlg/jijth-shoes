@@ -17,6 +17,6 @@ function item(){
 }
 
 function image(){
-    const form_data = new FormData()
-    
+    const formData = new FormData();
+    const photos = document.querySelector('input[type="file"][multiple]');
 }
