@@ -4,16 +4,7 @@ function item(id){
     var name = document.getElementById("name").value;
     var stock = document.getElementById("stock").value;
     var price = document.getElementById("price").value;
-    const xhttp = new XMLHttpRequest();
-    xhttp.onload = function(){
-        document.getElementById("name").innerHTML = name;
-        document.getElementById("stock").innerHTML = stock;
-        document.getElementById("price").innerHTML = price;
-        action = xhttp.responseText
-        console.log(action)
-    }
-    xhttp.open("GET", `/views/add?name=${name}&stock=${stock}&price=${price}&user_id=${id}`)
-    xhttp.send();
+    fetch(`/views/add?name=${name}&stock=${stock}&price=${price}`)
 }
 
 function image(){
