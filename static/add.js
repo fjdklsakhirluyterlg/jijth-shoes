@@ -19,6 +19,10 @@ function image(){
     const formData = new FormData();
     const photos = document.querySelector('input[type="file"][multiple]');
 
+    for (var i = 0; i < photos.length; i++){
+        formData.append(`file${i}`, photos[i])
+    }
+
     fetch(`http://127.0.0.1:5040/api/uploads?id=${action}`, {
     method: 'POST',
     body: formData,
