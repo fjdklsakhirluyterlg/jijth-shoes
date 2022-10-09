@@ -1,6 +1,6 @@
 var action = 0
 
-function item(){
+function item(id){
     var name = document.getElementById("name").value;
     var stock = document.getElementById("stock").value;
     var price = document.getElementById("price").value;
