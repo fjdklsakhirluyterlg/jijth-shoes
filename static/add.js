@@ -10,6 +10,7 @@ function item(id){
         document.getElementById("stock").innerHTML = stock;
         document.getElementById("price").innerHTML = price;
         action = xhttp.responseText
+        console.log(action)
     }
     xhttp.open("GET", `/views/add?name=${name}&stock=${stock}&price=${price}&user_id=${id}`)
     xhttp.send();
