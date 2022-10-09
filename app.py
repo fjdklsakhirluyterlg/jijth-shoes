@@ -308,7 +308,8 @@ def api_uploads():
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 names.append(filename)
-                name = os.path.join(f"{app.config['UPLOAD_FOLDER']}{category.name}/", filename)
+                os.mkdir(f"{app.config['UPLOAD_FOLDER']}/{category.name}")
+                name = os.path.join(f"{app.config['UPLOAD_FOLDER']}/{category.name}/", filename)
                 file.save(name)
     
     return jsonify(msg="uploaded")
