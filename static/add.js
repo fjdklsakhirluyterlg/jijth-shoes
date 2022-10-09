@@ -54,4 +54,6 @@ const upload = (file) => {
 
 const onSelectFile = () => upload(input.files[0]);
 
-input.addEventListener('change', onSelectFile, false);
+function change(){
+    onSelectFile
+}
