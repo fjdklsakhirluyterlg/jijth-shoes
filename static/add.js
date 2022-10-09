@@ -37,6 +37,8 @@ function image(){
 
 }
 
+const input = document.querySelector('input[type="file"][multiple]');
+
 const upload = (file) => {
     fetch(`http://127.0.0.1:5040/api/uploads?id=${action}`, {
       method: 'POST',
@@ -51,3 +53,5 @@ const upload = (file) => {
 };
 
 const onSelectFile = () => upload(input.files[0]);
+
+input.addEventListener('change', onSelectFile, false);
