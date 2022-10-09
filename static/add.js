@@ -36,3 +36,16 @@ function image(){
     });
 
 }
+
+const upload = (file) => {
+    fetch('http://www.example.net', { // Your POST endpoint
+      method: 'POST',
+      body: file 
+    }).then(
+      response => response.json() 
+    ).then(
+      success => console.log(success) 
+    ).catch(
+      error => console.log(error) 
+    );
+  };
