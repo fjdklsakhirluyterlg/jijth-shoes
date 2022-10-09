@@ -16,3 +16,7 @@ function item(){
     xhttp.send();
 }
 
+function image(){
+    const form_data = new FormData()
+    
+}
