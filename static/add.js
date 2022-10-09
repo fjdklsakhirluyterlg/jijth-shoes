@@ -12,7 +12,7 @@ function item(id){
         document.getElementById("price").setAttribute('value', price);
         action = xhttp.responseText
     }
-    xhttp.open("GET", `/views/add?name=${name}&stock=${stock}&price=${price}`)
+    xhttp.open("GET", `/views/add?name=${name}&stock=${stock}&price=${price}&user_id=${id}`)
     xhttp.send();
 }
 
