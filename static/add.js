@@ -20,17 +20,17 @@ function image(){
     for (var i = 0; i < photos.length; i++){
         formData.append(`file`, photos.files[i])
     }
-
-    fetch(`http://127.0.0.1:5040/api/uploads?id=${action}`, {
-    method: 'POST',
-    body: formData,
-    })
-    .then(response => response.json())
-    .then(result => {
-    console.log('Success:', result);
-    })
-    .catch(error => {
-    console.error('Error:', error);
-    });
+    console.log(formData)
+    // fetch(`http://127.0.0.1:5040/api/uploads?id=${action}`, {
+    // method: 'POST',
+    // body: formData,
+    // })
+    // .then(response => response.json())
+    // .then(result => {
+    // console.log('Success:', result);
+    // })
+    // .catch(error => {
+    // console.error('Error:', error);
+    // });
 
 }
