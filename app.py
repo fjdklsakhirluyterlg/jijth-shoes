@@ -43,6 +43,11 @@ def page_not_found(e):
 
 app.register_error_handler(404, page_not_found)
 
+@app.after_request
+def add_header(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
+
 DB_NAME = "database.db"
 
 UPLOAD_FOLDER = './images/'
