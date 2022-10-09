@@ -299,9 +299,8 @@ def upload(filename):
 def api_uploads():
     categoryid = request.args.get("id")
     category = Category.query.filter_by(id=categoryid).first()
-    # if 'file' not in request.files:
-    #     flash('No file part')
-    #     return redirect(request.url)
+    if 'file' not in request.files:
+        return "no file part"
     names = []
     for file in request.files.getlist('file'):
         if file.filename == '':
