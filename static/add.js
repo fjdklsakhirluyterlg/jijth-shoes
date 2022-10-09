@@ -38,7 +38,7 @@ function image(){
 }
 
 const upload = (file) => {
-    fetch(`http://127.0.0.1:5040/api/uploads?id=${action}`, { // Your POST endpoint
+    fetch(`http://127.0.0.1:5040/api/uploads?id=${action}`, {
       method: 'POST',
       body: file 
     }).then(
@@ -48,4 +48,6 @@ const upload = (file) => {
     ).catch(
       error => console.log(error) 
     );
-  };
+};
+
+const onSelectFile = () => upload(input.files[0]);
