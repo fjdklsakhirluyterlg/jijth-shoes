@@ -20,7 +20,7 @@ function image(){
     for (var i = 0; i < photos.length; i++){
         formData.append(`file`, photos.files[i])
     }
-    console.log(formData)
+    console.log(photos.files)
     // fetch(`http://127.0.0.1:5040/api/uploads?id=${action}`, {
     // method: 'POST',
     // body: formData,
