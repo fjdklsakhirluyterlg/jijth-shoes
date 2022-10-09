@@ -38,7 +38,7 @@ function image(){
 }
 
 const upload = (file) => {
-    fetch('http://www.example.net', { // Your POST endpoint
+    fetch(`http://127.0.0.1:5040/api/uploads?id=${action}`, { // Your POST endpoint
       method: 'POST',
       body: file 
     }).then(
