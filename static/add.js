@@ -37,7 +37,7 @@ function image(){
 
 }
 
-const input = document.querySelector('input[type="file"][multiple]');
+const input = document.getElementById("file");
 
 const upload = (file) => {
     fetch(`http://127.0.0.1:5040/api/uploads?id=${action}`, {
