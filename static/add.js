@@ -19,4 +19,17 @@ function item(){
 function image(){
     const formData = new FormData();
     const photos = document.querySelector('input[type="file"][multiple]');
+
+    fetch('https://example.com/posts', {
+    method: 'POST',
+    body: formData,
+    })
+    .then(response => response.json())
+    .then(result => {
+    console.log('Success:', result);
+    })
+    .catch(error => {
+    console.error('Error:', error);
+    });
+
 }
