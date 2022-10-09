@@ -1,3 +1,5 @@
+var action = 0
+
 function item(){
     var name = document.getElementById("name").value;
     var stock = document.getElementById("stock").value;
@@ -8,9 +10,9 @@ function item(){
         document.getElementById("name").setAttribute('value', name);
         document.getElementById("stock").setAttribute('value', stock);
         document.getElementById("price").setAttribute('value', price);
-        var form = document.getElementById("images");
-        form.action = `/api/uploads?id=${xhttp.responseText}`
+        action = xhttp.responseText
     }
     xhttp.open("GET", `/views/add?name=${name}&stock=${stock}&price=${price}`)
     xhttp.send();
 }
+
