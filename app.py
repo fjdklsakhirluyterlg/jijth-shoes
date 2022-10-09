@@ -301,8 +301,7 @@ def api_uploads():
         names = []
         for file in request.files.getlist('file'):
             if file.filename == '':
-                flash('No selected file')
-                return redirect(request.url)
+                return "no files"
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 names.append(filename)
